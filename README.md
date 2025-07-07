@@ -1,4 +1,3 @@
-rts, and real-world impact**—exactly what interviewers are looking for.
 
 ---
 
