@@ -1,7 +1,7 @@
 
 ---
 
-## ✅  Restaurant Recommendation System for CDLU Students
+## ✅  Restaurant Recommendation System for JCD Students
 
 > 👋 *“I'd like to walk you through a full-stack project I developed, which combines frontend development, backend APIs, and a recommendation engine to solve a real-world student problem.”*
 
@@ -119,3 +119,11 @@ As part of development, I ensured comprehensive testing in all major categories:
 > 🎯 *"In short, this project gave me end-to-end experience in solving a real problem using full-stack development and user-centered design, and it taught me how to balance technical performance with real-world usability."*
 
 ---
+
+
+## 🔗 Related Repositories
+
+This project works together with the frontend repository. You can find it here:
+
+- [Frontend Repository](https://github.com/chiragsardana/exploria-frontend)
+
