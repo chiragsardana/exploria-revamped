@@ -1,7 +1,7 @@
 
 ---
 
-## ✅  Restaurant Recommendation System for CDLU Students**
+## ✅  Restaurant Recommendation System for CDLU Students
 
 > 👋 *“I'd like to walk you through a full-stack project I developed, which combines frontend development, backend APIs, and a recommendation engine to solve a real-world student problem.”*
 
