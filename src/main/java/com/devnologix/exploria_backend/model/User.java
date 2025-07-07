@@ -33,7 +33,7 @@ public class User {
     private String businessTitle;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "user_roles_ncu",
+    @JoinTable(name = "user_roles_sirsa",
             joinColumns = {
             @JoinColumn(name = "USER_ID")
             },

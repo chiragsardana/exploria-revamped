@@ -10,17 +10,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.Keys;
-
+import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
 
 @Component
@@ -34,6 +31,9 @@ public class TokenProvider implements Serializable {
 
     @Value("${jwt.authorities.key}")
     public String AUTHORITIES_KEY;
+
+    @Value("${jwt.secret}")
+    public String secret;
 
     public String getUsernameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
@@ -57,10 +57,11 @@ public class TokenProvider implements Serializable {
     }
 
     // Method to create a SecretKey from your SIGNING_KEY
-    private Key getSigningKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(this.SIGNING_KEY); // Assuming SIGNING_KEY is Base64 encoded
-        return Keys.hmacShaKeyFor(keyBytes);
-    }
+    public Key getSigningKey() {
+    String secret = "this-is-a-secure-key-with-more-than-32-bytes!!"; // ✔ at least 32 bytes
+    byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);
+    return new SecretKeySpec(keyBytes, SignatureAlgorithm.HS256.getJcaName());
+}
 
     private Boolean isTokenExpired(String token) {
         final Date expiration = getExpirationDateFromToken(token);

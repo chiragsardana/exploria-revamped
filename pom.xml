@@ -62,10 +62,23 @@
     </dependency>
     <!-- Dependecy for JWT - Devnologix -->
     <dependency>
-      <groupId>io.jsonwebtoken</groupId>
-      <artifactId>jjwt-api</artifactId>
-      <version>0.11.5</version>
-    </dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-api</artifactId>
+    <version>0.11.5</version>
+</dependency>
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-impl</artifactId>
+    <version>0.11.5</version>
+    <scope>runtime</scope>
+</dependency>
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if using Gson -->
+    <version>0.11.5</version>
+    <scope>runtime</scope>
+</dependency>
+
     <!-- Dependency for H2 DB - Devnologix -->
     <dependency>
       <groupId>com.h2database</groupId>

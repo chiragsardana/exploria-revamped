@@ -22,6 +22,7 @@ import com.devnologix.exploria_backend.service.ResturantService;
 
 
 
+// Places
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/Resturant")

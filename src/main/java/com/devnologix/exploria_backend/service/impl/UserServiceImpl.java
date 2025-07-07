@@ -76,8 +76,8 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         Role role = roleService.findByName("USER");
         Set<Role> roleSet = new HashSet<>();
         roleSet.add(role);
-
-        if(nUser.getEmail().split("@")[1].equals("abcg.com")){
+        // For Admin creation via a userinterface itself 
+        if(nUser.getEmail().split("@")[1].equals("devnologix.com")){
             role = roleService.findByName("ADMIN");
             roleSet.add(role);
         }

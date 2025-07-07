@@ -28,8 +28,9 @@ public class Resturant {
     @Column(name = "rating", nullable = false)
     private Double rating;
     @ElementCollection
-    @CollectionTable(name = "image_urls_ncu", joinColumns = @JoinColumn(name = "image_id"))
+    @CollectionTable(name = "image_urls_sirsa", joinColumns = @JoinColumn(name = "image_id"))
     private List<String> image_urls;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "resturant_id")
     private List<Dish> dishes;
     public List<Dish> getDishes() {

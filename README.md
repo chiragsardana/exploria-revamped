@@ -1,203 +1,122 @@
-# Java API Service Starter
+rts, and real-world impact**—exactly what interviewers are looking for.
 
-This is a minimal Java API service starter based on [Google Cloud Run Quickstart](https://cloud.google.com/run/docs/quickstarts/build-and-deploy/deploy-java-service).
+---
 
-## Getting Started
+## ✅  Restaurant Recommendation System for CDLU Students**
 
-Server should run automatically when starting a workspace. To run manually, run:
-```sh
-mvn spring-boot:run
-```
+> 👋 *“I'd like to walk you through a full-stack project I developed, which combines frontend development, backend APIs, and a recommendation engine to solve a real-world student problem.”*
 
-## Issues faced while learning spring boot
+---
 
-This error message indicates that your Spring Boot application is trying to configure a database connection but cannot find the necessary information. Specifically, it's missing the database URL and cannot determine which database driver to use.
+### 🧠 **Project Overview: What & Why?**
 
-Here's a breakdown of the problem and how to fix it:
+The project is a **Restaurant Recommendation Website** designed specifically for students of **JCD, Sirsa**.
 
-Problem:
+It’s aimed at helping **first- and second-year students**—especially those who are new to the city—discover restaurants around the college that match their **personal preferences** such as cuisine, affordability, and distance.
 
-Missing Database URL: Spring Boot needs to know the URL of your database to connect to it. This is usually specified in your application configuration (e.g., application.properties or application.yml).
-Failed to Determine Driver Class: The application doesn't know which database driver to load. This happens when you haven't provided enough information about the database you're using.
-Solutions:
+Rather than relying on generic apps or manually browsing Google Maps and reviews, students can log in to our platform, get **personalized suggestions**, view menus, read **peer feedback**, and even contribute their own reviews.
 
-You have two main options to resolve this:
+---
 
-Option 1: Configure an External Database (e.g., MySQL, PostgreSQL, etc.)
+### 👨‍💻 **My Role: Full-Stack Developer**
 
-This is the most common scenario for production applications.
+I played the role of a **full-stack developer**, which meant I was responsible for:
 
-Add Database Dependencies: Ensure you have the correct database driver dependency in your pom.xml (for Maven) or build.gradle (for Gradle). You've already added the mysql-connector-java dependency, which is a good start for MySQL.
+* Designing and building the **frontend user interface**
+* Developing the **backend logic and REST APIs**
+* Managing the **database schema and data flow**
+* Supporting integration of the **recommendation engine**
+* Handling **testing and deployment**
 
-Configure Database Properties: In your src/main/resources/application.properties (or application.yml), add the following properties, replacing the placeholders with your actual database details:
+---
 
-properties
-    spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
-    spring.datasource.username=your_username
-    spring.datasource.password=your_password
-    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+### ⚙️ **Tech Stack**
 
+* **Frontend**: HTML, CSS, JavaScript, React (fully responsive and mobile-friendly)
+* **Backend**: Spring Boot with RESTful APIs
+* **Database**: MySQL
+* **Machine Learning (Team Collaboration)**: Used to deliver real-time, personalized recommendations
+* **Testing**: Manual + automated testing for functionality, performance, and security
 
-*   `spring.datasource.url`: The URL of your database. Adjust the host, port, and database name as needed.
-*   `spring.datasource.username`: Your database username.
-*   `spring.datasource.password`: Your database password.
-*   `spring.datasource.driver-class-name`: The fully qualified name of the database driver class. For MySQL Connector/J 8.x, it's `com.mysql.cj.jdbc.Driver`.
+---
 
+### 🚀 **Key Features**
 
-Option 2: Use an Embedded Database (H2, HSQL, or Derby)
+1. **Login & User Profiles**
 
-This is often used for development or testing purposes because it doesn't require a separate database server installation.
+   * Users can register and log in to access their preferences, saved places, and reviews.
 
-Add Embedded Database Dependency: Add the dependency for your chosen embedded database to your pom.xml or build.gradle. For example, for H2:
+2. **Search & Smart Filters**
 
-<dependency>
-        <groupId>com.h2database</groupId>
-        <artifactId>h2</artifactId>
-        <scope>runtime</scope>
-    </dependency>
+   * Students can search for restaurants by cuisine, price, or distance from campus.
 
+3. **Personalized Recommendations**
 
-No Explicit Configuration Needed (Usually): Spring Boot will typically auto-configure an embedded database if it finds the dependency on the classpath and you haven't configured an external database.
-Which Option to Choose?
+   * ML model suggests restaurants based on previous interactions and preferences.
 
-Choose Option 1 if you're connecting to an existing external database server (like a production database).
-Choose Option 2 if you need a simple database for development or testing and don't want to set up an external server.
-Troubleshooting:
+4. **Live Menus & Details**
 
-Check your dependency: Make sure the database driver dependency is correctly added to your build file and that the version is compatible with your database server.
-Verify configuration properties: Double-check that the database URL, username, password, and driver class name are correct in your application.properties or application.yml.
-Active profiles: If you're using Spring profiles, ensure that the correct profile with the database configuration is active.
-Since you mentioned having the mysql-connector-java dependency, it's likely that you need to configure the database connection details in your application.properties file as described in Option 1.
+   * Access menus, pricing, contact info, and images — all centralized in one place.
 
-Let me know if you'd like help adding the database configuration to your application.properties file!
+5. **Peer Reviews & Ratings**
 
-## Issue 2
+   * Students can rate restaurants and write reviews to help others make better choices.
 
-You're absolutely right to ask that! While adding the dependency is a crucial first step, it's not the only thing needed for your Spring Boot application to connect to a database.
+6. **Community & Feedback**
 
-Think of it this way: adding the dependency is like putting a car engine in your garage. You have the engine (the driver), but you still need to put it in a car (your application), connect it to the fuel lines (the database URL, username, and password), and turn the key (start the application).
+   * Crowdsourced feedback enhances recommendation accuracy over time.
 
-Here's why you're still seeing the error after adding the dependency:
+---
 
-The Dependency Provides the Driver, Not the Connection Details: The mysql-connector-java dependency provides the Java code that knows how to communicate with a MySQL database. However, it doesn't tell your application which MySQL database to connect to or how to authenticate.
-Spring Boot Needs Configuration: Spring Boot's auto-configuration is intelligent, but it still needs some guidance. When it sees a database driver on the classpath, it assumes you want to connect to a database. But it doesn't know the specifics unless you provide them.
-Missing URL and Credentials: The error message explicitly says "url attribute is not specified" and "Failed to determine a suitable driver class". This means Spring Boot is looking for the database connection URL and potentially other details like the username and password, but it can't find them in your configuration.
-In summary: Adding the dependency gives your application the ability to connect to a MySQL database, but you still need to tell it where the database is and how to log in. This is done through the spring.datasource.* properties in your application.properties or application.yml file.
+### 🧪 **Testing Efforts**
 
-Without those configuration properties, Spring Boot doesn't have enough information to establish a database connection, even though the driver is available.
+As part of development, I ensured comprehensive testing in all major categories:
 
-Let me know if you'd like me to help you add the necessary configuration to your application.properties file!
+#### ✅ 1. **Functionality Testing**
 
+* Validated login, registration, search results, and feedback submissions.
 
+#### ✅ 2. **Usability Testing**
 
+* Focused on UI responsiveness across mobile/desktop.
+* Collected feedback from test users to improve layout and navigation.
 
-Chirag
-spring security default password and username on adding dependency
+#### ✅ 3. **Performance Testing**
 
-Gemini
-When you add the Spring Security starter dependency to your Spring Boot application (spring-boot-starter-security), Spring Boot's auto-configuration will automatically secure your application by default.
+* Measured loading speed and responsiveness across multiple restaurant pages.
+* Simulated traffic to test how well the backend and database scaled.
 
-Here's what happens and where to find the default username and password:
+#### ✅ 4. **Integration Testing**
 
-Default Security Configuration: Spring Boot provides a default security configuration that protects all endpoints.
-Default User: It creates a default in-memory user with a randomly generated password.
-Password in the Console: The randomly generated password for the default user is printed to the console when your application starts.
-Where to Find the Default Password:
+* Ensured seamless data flow between frontend, backend, and ML model.
+* Verified API correctness and response consistency.
 
-Look for a line similar to this in your application's console output when it starts:
+#### ✅ 5. **Security Testing**
 
-Using generated security password: <generated_password>
+* Implemented input validation and basic encryption.
+* Checked for vulnerabilities like SQL injection and XSS.
 
+---
 
-The part enclosed in <generated_password> is the default password.
+### 💡 **Why This Matters – Real-World Impact**
 
-Default Username:
+* New students often **don’t know the area**, and waste a lot of time picking a restaurant. This platform cuts that time down to minutes.
+* The system allows them to rely on their **peer community’s reviews**, not just random public reviews.
+* Because it’s **mobile-optimized**, they can use it on the go without any technical training.
+* It also gives **restaurants visibility** among students, helping them engage with a local audience.
 
-The default username is usually user.
+---
 
-How to Use the Default Credentials:
+### 🧠 **What I Learned**
 
-When you access a protected endpoint in your application (which is all of them by default), you'll be prompted for a username and password. Use user as the username and the randomly generated password from the console output.
+* Deep understanding of **frontend-backend communication**
+* How to design systems for **real user needs** and usability
+* Experience in integrating a **recommendation engine** with user profiles
+* Real-world testing practices: **security, performance, and UX**
+* Importance of community feedback in building smarter systems
 
-Important Considerations:
+---
 
-This is for development only: The default security setup with a random password is not suitable for production environments.
-Override Default Security: In a real application, you'll want to configure your own security, which typically involves:
-Defining your own users and roles.
-Configuring authentication providers (e.g., database, LDAP, OAuth2).
-Customizing authorization rules.
-Disabling Default Security: If you don't want any security by default, you can exclude the security auto-configuration. However, it's generally recommended to have some form of security enabled.
-So, to summarize, when you add the Spring Security dependency, Spring Boot gives you a default user with a randomly generated password that you can find in the console output. This is a starting point for development, and you should configure your own security for production.
+> 🎯 *"In short, this project gave me end-to-end experience in solving a real problem using full-stack development and user-centered design, and it taught me how to balance technical performance with real-world usability."*
 
-
-## Issue 3 
-
-
-This error message:
-
-gframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' ... Unable to resolve name [org.hibernate.dialect.MySQL5Dialect] as strategy [org.hibernate.dialect.Dialect]
-
-
-indicates that Hibernate (the JPA provider used by Spring Boot by default) is unable to find or recognize the specified dialect: org.hibernate.dialect.MySQL5Dialect.
-
-This usually happens when:
-
-Incorrect Hibernate Dialect: The dialect you've specified (org.hibernate.dialect.MySQL5Dialect) might be incorrect for the version of Hibernate you are using or the version of MySQL you are connecting to. Hibernate dialects change over time to support new database features and versions.
-Missing Dependency: Although you have the MySQL connector, you might be missing a specific Hibernate dependency or have a version conflict that prevents the dialect from being loaded correctly.
-How to fix it:
-
-Update or Change the Hibernate Dialect:
-Check your Hibernate and MySQL versions: Determine the versions of Hibernate and MySQL you are using.
-
-Find the correct dialect: Refer to the Hibernate documentation for the correct dialect for your specific MySQL version and the Hibernate version used by your Spring Boot dependency.
-
-Common MySQL Dialects: Some common MySQL dialects include:
-
-org.hibernate.dialect.MySQLDialect (older versions)
-org.hibernate.dialect.MySQL57Dialect (for MySQL 5.7)
-org.hibernate.dialect.MySQL8Dialect (for MySQL 8)
-Update application.properties: Change the spring.jpa.properties.hibernate.dialect property in your application.properties to the correct dialect. For example, if you're using MySQL 8, change it to:
-
-properties
-        spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
-
-
-Verify Dependencies:
-Check pom.xml (or build.gradle): Ensure that your pom.xml includes the spring-boot-starter-data-jpa dependency. This starter brings in Hibernate and its necessary dependencies.
-Dependency Conflicts: If you have other dependencies that might be bringing in conflicting versions of Hibernate, you might need to exclude them or manage their versions explicitly.
-Steps to take:
-
-Identify your MySQL version.
-Identify the Hibernate version used by your spring-boot-starter-data-jpa dependency. You can usually find this in your project's dependency tree (e.g., by running mvn dependency:tree in Maven).
-Consult the Hibernate documentation to find the correct dialect for your versions.
-Update the spring.jpa.properties.hibernate.dialect property in your application.properties file.
-Restart your application.
-By specifying the correct Hibernate dialect, you help Hibernate understand the specific features and syntax of your MySQL database, resolving the "Unable to resolve name" error.
-
-## Issue 4
-
-Gemini
-The default port number for MySQL is 3306.
-
-When you install and configure a MySQL server, it typically listens for incoming connections on port 3306 by default.
-
-In your Spring Boot application's application.properties file, the spring.datasource.url property includes the port number:
-
-properties
-spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
-
-
-In this URL:
-
-jdbc:mysql:// indicates that you are using the JDBC driver for MySQL.
-localhost is the hostname or IP address of the MySQL server (in this case, it's running on the same machine as your application).
-3306 is the port number where the MySQL server is listening.
-your_database_name is the name of the database you want to connect to.
-Important:
-
-If you have configured your MySQL server to use a different port, you need to update the port number in the spring.datasource.url property in your application.properties file accordingly.
-Make sure that your firewall is not blocking connections to the MySQL port (3306 by default) on the machine where your MySQL server is running.
-So, in summary, the standard port for MySQL is 3306, and you specify it in your Spring Boot application's database URL to tell your application where to find the MySQL server.
-
-## Issue 5
-
+---

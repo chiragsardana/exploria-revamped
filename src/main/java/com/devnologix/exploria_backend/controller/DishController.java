@@ -20,7 +20,7 @@ import com.devnologix.exploria_backend.model.Dish;
 import com.devnologix.exploria_backend.service.DishService;
 
 
-
+// Offerring
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/Dish")
