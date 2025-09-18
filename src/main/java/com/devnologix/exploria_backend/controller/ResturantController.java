@@ -65,5 +65,28 @@ public class ResturantController {
     public ResponseEntity<List<Resturant>> getResturantsBySearch(@PathVariable("search") String search) {
         return new ResponseEntity<List<Resturant>>(resturantService.getAllRestaurantBySearch(search), HttpStatus.OK);
     }
+
+    // New Addition
+
+    // 3️⃣ Filter restaurants by cost range using path variables
+    @GetMapping("/getResturantsByCost/{minCost}/{maxCost}")
+    public List<Resturant> filterByCost(
+            @PathVariable Integer minCost,
+            @PathVariable Integer maxCost) {
+        return resturantService.getRestaurantsByCostForOne(minCost, maxCost);
+    }
+    // 4️⃣ Filter restaurants by delivery time range using path variables
+    @GetMapping("/getResturantsByDeliveryTime/{minTime}/{maxTime}")
+    public List<Resturant> filterByDeliveryTime(
+            @PathVariable Integer minTime,
+            @PathVariable Integer maxTime) {
+        return resturantService.getRestaurantsByDeliveryTimeRange(minTime, maxTime);
+    }
+
+    // 5️⃣ Filter restaurants by cuisine using path variable
+    @GetMapping("/getResturantsByCuisine/{cuisine}")
+    public List<Resturant> filterByCuisine(@PathVariable String cuisine) {
+        return resturantService.getRestaurantsByCuisine(cuisine);
+    }
     
 }

@@ -19,5 +19,23 @@ public interface ResturantRepository extends JpaRepository<Resturant, Long> {
     public List<Resturant> findAllRestaurantBySearch(@Param("search") String search);
 
 
+    // New Addition - 18th September 2025
+
+
+    // Find restaurants within a cost range
+    public List<Resturant> findByCostForOneBetween(Integer minCost, Integer maxCost);
+
+    // // Cuisine is an @ElementCollection (List<String>)
+    // @Query("SELECT r FROM Resturant r JOIN r.cuisines c WHERE c LIKE %:cuisine%")
+    // List<Resturant> findByCuisinesContaining(@Param("cuisine") String cuisine);
+
+    // List<Resturant> findByCuisines(String cuisine);
+    @Query("SELECT r FROM Resturant r JOIN r.cuisines c WHERE LOWER(c) = LOWER(:cuisine)")
+List<Resturant> findByCuisines(@Param("cuisine") String cuisine);
+
+
+
+    // Example with Integer deliveryTime (in minutes)
+    List<Resturant> findByDeliveryTimeBetween(Integer minTime, Integer maxTime);
 
 }

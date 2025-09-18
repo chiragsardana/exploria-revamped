@@ -67,7 +67,10 @@ public class WebSecurityConfig {
                                 "/Rating/getAllRatingByDishId/**", "/Rating/getAllRatingByResturantId/**",
                                 "/Rating/getAllRatingByUserId/**", "/Dish/getAllDishByResturantId/**",
                                 "/Dish/getAllDishBySearch/**",
-                                "/Resturant/getRestaurantBySearch/**")
+                                "/Resturant/getRestaurantBySearch/**",
+                                "/Resturant/getResturantsByCost/**",
+                                "/Resturant/getResturantsByDeliveryTime/**",
+                                "/Resturant/getResturantsByCuisine/**")
                         .permitAll()
                         .anyRequest().authenticated())
                 .exceptionHandling(exception -> exception

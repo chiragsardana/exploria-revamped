@@ -64,5 +64,38 @@ public class ResturantServiceImpl implements ResturantService{
 		// TODO Auto-generated method stub
 		return resturantRepository.findAllRestaurantBySearch(search);
 	}
+
+    // New Addition
+
+    @Override
+    public List<Resturant> getRestaurantsByCostForOne(Integer minCost, Integer maxCost) {
+        // TODO Auto-generated method stub
+        // throw new UnsupportedOperationException("Unimplemented method 'getRestaurantsByCostRange'");
+        return resturantRepository.findByCostForOneBetween(minCost,maxCost);
+    }
+
+    @Override
+    public List<Resturant> getRestaurantsByDeliveryTimeRange(Integer minTime, Integer maxTime) {
+        // TODO Auto-generated method stub
+        // throw new UnsupportedOperationException("Unimplemented method 'getRestaurantsByDeliveryTimeRange'");
+        return resturantRepository.findByDeliveryTimeBetween(minTime,maxTime);
+    }
+
+    @Override
+    public List<Resturant> getRestaurantsByCuisine(String cuisine) {
+        // TODO Auto-generated method stub
+        
+        // throw new UnsupportedOperationException("Unimplemented method 'getRestaurantsByCuisine'");
+        /* 
+        System.out.println("This is my cuisine"+cuisine+"\n");
+        List<Resturant> myList = resturantRepository.findByCuisines(cuisine);
+        System.out.println(myList.size()+" is the list size");
+        for (Resturant resturant : myList) {
+            System.out.println(resturant.getId());
+        }
+        */
+        return resturantRepository.findByCuisines(cuisine);
+    }
+    
     
 }
