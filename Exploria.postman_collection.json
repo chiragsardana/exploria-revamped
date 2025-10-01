@@ -392,7 +392,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Domino's Pizza\",\n  \"description\": \"Best pizza in town\",\n  \"rating\": 4.3,\n  \"image_urls\": [\n    \"https://b.zmtcdn.com/data/pictures/9/20223399/f213cc2a1c30b7fc51af0bab24307bab.jpeg\"\n  ],\n  \"dishes\": []\n}",
+							"raw": "{\n  \"name\": \"Domino's Pizza\",\n  \"description\": \"Best pizza in town\",\n  \"rating\": 4.3,\n  \"costForOne\": 300,\n  \"deliveryTime\": 30,\n  \"image_urls\": [\n    \"https://b.zmtcdn.com/data/pictures/9/20223399/f213cc2a1c30b7fc51af0bab24307bab.jpeg\"\n  ],\n  \"dishes\": [],\n  \"cuisines\": [\n    \"South Indian\",\n    \"Italian\",\n    \"North Indian\"\n  ]\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -469,7 +469,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Domino's Pizza\",\n  \"description\": \"Best pizza in town\",\n  \"rating\": 4.5,\n  \"image_urls\": [\n    \"https://b.zmtcdn.com/data/pictures/9/20223399/f213cc2a1c30b7fc51af0bab24307bab.jpeg\"\n  ],\n  \"dishes\": []\n}",
+							"raw": "{\n  \"name\": \"Domino's Pizza\",\n  \"description\": \"Best pizza in town\",\n  \"rating\": 4.5,\n  \"costForOne\": 300,\n  \"deliveryTime\": 30,\n  \"image_urls\": [\n    \"https://b.zmtcdn.com/data/pictures/9/20223399/f213cc2a1c30b7fc51af0bab24307bab.jpeg\"\n  ],\n  \"dishes\": [],\n  \"cuisines\": [\n    \"North Indian\",\n    \"Pizza\",\n    \"Sardana\"\n  ]\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -477,7 +477,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{host}}:{{port}}/Resturant/updateById/2",
+							"raw": "http://{{host}}:{{port}}/Resturant/updateById/1",
 							"protocol": "http",
 							"host": [
 								"{{host}}"
@@ -486,7 +486,7 @@
 							"path": [
 								"Resturant",
 								"updateById",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -625,6 +625,75 @@
 							"path": [
 								"Resturant",
 								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Cuisines",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{adminToken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Resturant/getAllCuisines",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Resturant",
+								"getAllCuisines"
 							]
 						}
 					},
@@ -772,6 +841,148 @@
 					"response": []
 				},
 				{
+					"name": "Get Place by Cost",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{adminToken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Resturant/getResturantsByCost/0/300",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Resturant",
+								"getResturantsByCost",
+								"0",
+								"300"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Place by Delivery Time",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{adminToken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Resturant/getResturantsByDeliveryTime/0/30",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Resturant",
+								"getResturantsByDeliveryTime",
+								"0",
+								"30"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get Place by Search",
 					"request": {
 						"method": "GET",
@@ -826,7 +1037,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://{{host}}:{{port}}/Resturant/getRestaurantBySearch/domino",
+							"raw": "http://{{host}}:{{port}}/Resturant/getRestaurantBySearch/pizza",
 							"protocol": "http",
 							"host": [
 								"{{host}}"
@@ -835,7 +1046,97 @@
 							"path": [
 								"Resturant",
 								"getRestaurantBySearch",
-								"domino"
+								"pizza"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Place by Cuisine",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{adminToken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Resturant/getResturantsByCuisine/Pizza",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Resturant",
+								"getResturantsByCuisine",
+								"Pizza"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Top 12 Places",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Resturant/top12",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Resturant",
+								"top12"
 							]
 						}
 					},
@@ -844,7 +1145,7 @@
 			]
 		},
 		{
-			"name": "Offering",
+			"name": "Offering - Future Scope",
 			"item": [
 				{
 					"name": "Add Offering",
@@ -1669,13 +1970,13 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{adminToken}}",
+								"value": "Bearer {{userToken}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user_id\": \"admin\",\n  \"review\": \"Absolutely delicious and well cooked!\",\n  \"stars\": 4.5,\n  \"dish_id\": 1,\n  \"resturant_id\": 2\n}\n",
+							"raw": "{\n  \"user_id\": \"admin\",\n  \"review\": \"Absolutely delicious and well cooked!Absolutely delicious and well cooked!Absolutely delicious and well cooked!Absolutely delicious and well cooked!\",\n  \"stars\": 4.5,\n  \"dish_id\": 5,\n  \"resturant_id\": 2\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2132,7 +2433,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://{{host}}:{{port}}/Rating/getAllRatingByUserId/admin",
+							"raw": "http://{{host}}:{{port}}/Rating/getAllRatingByUserId/chirag@exploria.com",
 							"protocol": "http",
 							"host": [
 								"{{host}}"
@@ -2141,7 +2442,106 @@
 							"path": [
 								"Rating",
 								"getAllRatingByUserId",
-								"admin"
+								"chirag@exploria.com"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Preference",
+			"item": [
+				{
+					"name": "Save Preference",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"chirag@gmail.com\",\n  \"costForOne\": \"200-250\",\n  \"deliveryTime\": \"10-20\",\n  \"cuisine\": \"North Indian\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/preferences",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"preferences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Perference by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/preferences/chirag@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"preferences",
+								"chirag@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Perferences",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/preferences",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"preferences"
 							]
 						}
 					},
