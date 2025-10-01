@@ -38,4 +38,7 @@ List<Resturant> findByCuisines(@Param("cuisine") String cuisine);
     // Example with Integer deliveryTime (in minutes)
     List<Resturant> findByDeliveryTimeBetween(Integer minTime, Integer maxTime);
 
+    @Query("SELECT DISTINCT r.cuisines FROM Resturant r")
+    List<String> findAllDistinctCuisines();
+
 }

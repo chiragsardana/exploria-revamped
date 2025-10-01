@@ -70,7 +70,11 @@ public class WebSecurityConfig {
                                 "/Resturant/getRestaurantBySearch/**",
                                 "/Resturant/getResturantsByCost/**",
                                 "/Resturant/getResturantsByDeliveryTime/**",
-                                "/Resturant/getResturantsByCuisine/**")
+                                "/Resturant/getResturantsByCuisine/**",
+                                "/Resturant/getAllCuisines",
+                                "/api/preferences",
+                                "/api/preferences/**",
+                                "/Resturant/top12")
                         .permitAll()
                         .anyRequest().authenticated())
                 .exceptionHandling(exception -> exception

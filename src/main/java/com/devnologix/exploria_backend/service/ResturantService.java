@@ -25,4 +25,8 @@ public interface ResturantService {
 
     // 5️⃣ Filter restaurants by cuisine
     List<Resturant> getRestaurantsByCuisine(String cuisine);
+
+    List<String> getAllCuisines();
+    List<Resturant> getTop12Restaurants();
+
 }

@@ -1,18 +1,20 @@
 package com.devnologix.exploria_backend.service.impl;
+
 import java.util.List;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.devnologix.exploria_backend.service.ResturantService;
 import com.devnologix.exploria_backend.exception.ResourceNotFoundException;
+import org.springframework.data.domain.Sort;
 import com.devnologix.exploria_backend.model.Resturant;
 import com.devnologix.exploria_backend.repository.ResturantRepository;
 
-
-
 @Service
-public class ResturantServiceImpl implements ResturantService{
+public class ResturantServiceImpl implements ResturantService {
     private ResturantRepository resturantRepository;
+
     public ResturantServiceImpl(ResturantRepository resturantRepository) {
         this.resturantRepository = resturantRepository;
     }
@@ -32,7 +34,8 @@ public class ResturantServiceImpl implements ResturantService{
     @Override
     public Resturant getResturantById(long id) {
         // TODO Auto-generated method stub
-        return resturantRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Resturant", "Id", resturantRepository));
+        return resturantRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Resturant", "Id", resturantRepository));
     }
 
     @Override
@@ -47,7 +50,7 @@ public class ResturantServiceImpl implements ResturantService{
         // TODO Auto-generated method stub
         Resturant resturant = getResturantById(id);
         resturantRepository.delete(resturant);
-        if(resturantRepository.existsById(id)){
+        if (resturantRepository.existsById(id)) {
             return false;
         }
         return true;
@@ -59,43 +62,57 @@ public class ResturantServiceImpl implements ResturantService{
         return resturantRepository.findAllResturantByRating(min, max);
     }
 
-	@Override
-	public List<Resturant> getAllRestaurantBySearch(String search) {
-		// TODO Auto-generated method stub
-		return resturantRepository.findAllRestaurantBySearch(search);
-	}
+    @Override
+    public List<Resturant> getAllRestaurantBySearch(String search) {
+        // TODO Auto-generated method stub
+        return resturantRepository.findAllRestaurantBySearch(search);
+    }
 
     // New Addition
 
     @Override
     public List<Resturant> getRestaurantsByCostForOne(Integer minCost, Integer maxCost) {
         // TODO Auto-generated method stub
-        // throw new UnsupportedOperationException("Unimplemented method 'getRestaurantsByCostRange'");
-        return resturantRepository.findByCostForOneBetween(minCost,maxCost);
+        // throw new UnsupportedOperationException("Unimplemented method
+        // 'getRestaurantsByCostRange'");
+        return resturantRepository.findByCostForOneBetween(minCost, maxCost);
     }
 
     @Override
     public List<Resturant> getRestaurantsByDeliveryTimeRange(Integer minTime, Integer maxTime) {
         // TODO Auto-generated method stub
-        // throw new UnsupportedOperationException("Unimplemented method 'getRestaurantsByDeliveryTimeRange'");
-        return resturantRepository.findByDeliveryTimeBetween(minTime,maxTime);
+        // throw new UnsupportedOperationException("Unimplemented method
+        // 'getRestaurantsByDeliveryTimeRange'");
+        return resturantRepository.findByDeliveryTimeBetween(minTime, maxTime);
     }
 
     @Override
     public List<Resturant> getRestaurantsByCuisine(String cuisine) {
         // TODO Auto-generated method stub
-        
-        // throw new UnsupportedOperationException("Unimplemented method 'getRestaurantsByCuisine'");
-        /* 
-        System.out.println("This is my cuisine"+cuisine+"\n");
-        List<Resturant> myList = resturantRepository.findByCuisines(cuisine);
-        System.out.println(myList.size()+" is the list size");
-        for (Resturant resturant : myList) {
-            System.out.println(resturant.getId());
-        }
-        */
+
+        // throw new UnsupportedOperationException("Unimplemented method
+        // 'getRestaurantsByCuisine'");
+        /*
+         * System.out.println("This is my cuisine"+cuisine+"\n");
+         * List<Resturant> myList = resturantRepository.findByCuisines(cuisine);
+         * System.out.println(myList.size()+" is the list size");
+         * for (Resturant resturant : myList) {
+         * System.out.println(resturant.getId());
+         * }
+         */
         return resturantRepository.findByCuisines(cuisine);
     }
-    
-    
+
+    @Override
+    public List<String> getAllCuisines() {
+        return resturantRepository.findAllDistinctCuisines();
+    }
+     @Override
+    public List<Resturant> getTop12Restaurants() {
+        // Fetch top 12 restaurants sorted by rating (highest first)
+        return resturantRepository.findAll(
+                PageRequest.of(0, 12, Sort.by(Sort.Direction.DESC, "rating"))
+        ).getContent();
+    }
+
 }
